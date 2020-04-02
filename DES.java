@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Base64;
  
@@ -17,8 +18,11 @@ public class DES {
 	public static void encrypt(String originalString, String secretKey) {
 	try{
 
-	    KeyGenerator keygenerator = KeyGenerator.getInstance("DES");
-	    SecretKey myDesKey = keygenerator.generateKey();
+	    
+	    SecureRandom sr = new SecureRandom(secretKey.getBytes());
+	      KeyGenerator kg = KeyGenerator.getInstance("DES");
+	      kg.init(sr);
+	      SecretKey myDesKey = kg.generateKey();
 	    
 	    
 	    Cipher desCipher;
