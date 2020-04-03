@@ -40,7 +40,7 @@ public class DES {
 	    // Encrypt the text
 	    byte[] textEncrypted = desCipher.doFinal(text);
 
-	    System.out.println("Text Encryted : " + textEncrypted);
+	    System.out.println("Text Encryted : " + new String(textEncrypted));
 	    
 	    // Initialize the same cipher for decryption
 	    desCipher.init(Cipher.DECRYPT_MODE, myDesKey);
